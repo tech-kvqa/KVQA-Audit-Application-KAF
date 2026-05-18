@@ -47,7 +47,8 @@
 
             localStorage.setItem('token', response.data.access_token);
             localStorage.setItem('userRole', 'sales');
-            this.$router.push('/sales/dashboard');
+            // this.$router.push('/sales/dashboard');
+            this.$router.push('/sales/application');
           } catch (error) {
             console.error(error);
         }
