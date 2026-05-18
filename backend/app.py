@@ -13,6 +13,14 @@ import secrets
 app = Flask(__name__)
 CORS(app)
 
+BASE_DIR = os.path.abspath(os.path.dirname(__file__))
+
+UPLOAD_FOLDER = os.getenv("UPLOAD_FOLDER", os.path.join(BASE_DIR, "kaf_uploads"))
+FORM_FOLDER = os.path.join(BASE_DIR, "uploaded_forms")
+
+os.makedirs(UPLOAD_FOLDER, exist_ok=True)
+os.makedirs(FORM_FOLDER, exist_ok=True)
+
 
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///database.db'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
@@ -695,7 +703,8 @@ def send_email(to_email, subject, body, file_path):
 @app.route('/sales/get-uploaded-form/<company_name>/<questionnaire_type>', methods=['GET'])
 def get_uploaded_form(company_name, questionnaire_type):
     upload_folder = "uploaded_forms"
-    file_path = os.path.join(upload_folder, f"{company_name}_{questionnaire_type}.xlsx")
+    # file_path = os.path.join(upload_folder, f"{company_name}_{questionnaire_type}.xlsx")
+    file_path = os.path.join(FORM_FOLDER, f"{company_name}_{questionnaire_type}.xlsx")
 
     if not os.path.exists(file_path):
         return jsonify({"error": "File not found"}), 404
@@ -729,7 +738,8 @@ def upload_kaf_files(token):
 
         if file:
             filename = f"{company.name}_{kaf}.pdf"
-            filepath = os.path.join(upload_folder, filename)
+            # filepath = os.path.join(upload_folder, filename)
+            filepath = os.path.join(UPLOAD_FOLDER, filename)
             file.save(filepath)
 
             setattr(kaf_doc, kaf.lower(), filepath)
@@ -752,12 +762,14 @@ def get_kaf_file(company_id, kaf_type):
         return jsonify({"file_url": None})
 
     return jsonify({
-        "file_url": f"http://127.0.0.1:5000/{file_path}"
+        # "file_url": f"http://127.0.0.1:5000/{file_path}"
+        "file_url": f"https://kvqa-audit-application-kaf.onrender.com/kaf_uploads/{os.path.basename(file_path)}"
     })
 
 @app.route('/kaf_uploads/<filename>')
 def serve_kaf_file(filename):
-    return send_file(os.path.join("kaf_uploads", filename))
+    # return send_file(os.path.join("kaf_uploads", filename))
+    return send_file(os.path.join(UPLOAD_FOLDER, filename))
 
 @app.route('/kaf-status/<int:company_id>', methods=['GET'])
 def get_kaf_status(company_id):
@@ -795,7 +807,8 @@ def upload_kaf(company_id, kaf_type):
     os.makedirs(upload_folder, exist_ok=True)
 
     filename = f"{company_id}_{kaf_type}.docx"
-    filepath = os.path.join(upload_folder, filename)
+    # filepath = os.path.join(upload_folder, filename)
+    filepath = os.path.join(UPLOAD_FOLDER, filename)
     file.save(filepath)
 
     kaf = KAFTracking.query.filter_by(company_id=company_id, kaf_type=kaf_type).first()
@@ -815,6 +828,11 @@ def upload_kaf(company_id, kaf_type):
 def view_kaf(company_id, kaf_type):
     kaf = KAFTracking.query.filter_by(company_id=company_id, kaf_type=kaf_type).first()
 
+    file_path = kaf.file_path.replace("\\", "/")
+
+    if not os.path.exists(file_path):
+        return jsonify({"error": "File not found on server"}), 404
+
     if not kaf or not kaf.file_path:
         return jsonify({"error": "File not found"}), 404
 
@@ -829,7 +847,8 @@ def view_kaf(company_id, kaf_type):
     filename = f"{company_name}_{kaf_type}{ext}"
 
     return send_file(
-        kaf.file_path,
+        # kaf.file_path,
+        file_path,
         as_attachment=True,
         download_name=filename
     )
