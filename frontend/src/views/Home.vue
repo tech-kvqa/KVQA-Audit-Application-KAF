@@ -11,9 +11,9 @@
             Admin Login
           </v-btn>
           
-          <v-btn color="secondary" block class="mb-3" @click="goToLogin('consultant')">
+          <!-- <v-btn color="secondary" block class="mb-3" @click="goToLogin('consultant')">
             Consultant Login
-          </v-btn>
+          </v-btn> -->
 
           <v-btn color="secondary" block class="mb-3" @click="goToLogin('sales')">
             Auditor Login
