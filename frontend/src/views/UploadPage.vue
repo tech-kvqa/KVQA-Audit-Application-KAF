@@ -45,7 +45,7 @@ export default {
 
       try {
         await axios.post(
-          `https://kvqa-aduit-application.onrender.com/upload/${this.companyId}`,
+          `https://kvqa-audit-application-kaf.onrender.com/upload/${this.companyId}`,
           formData
         );
 

@@ -41,7 +41,7 @@
     methods: {
       async login() {
         try {
-          const response = await axios.post("https://kvqa-aduit-application.onrender.com/consultant/login", {
+          const response = await axios.post("https://kvqa-audit-application-kaf.onrender.com/consultant/login", {
             username: this.username,
             password: this.password
           });

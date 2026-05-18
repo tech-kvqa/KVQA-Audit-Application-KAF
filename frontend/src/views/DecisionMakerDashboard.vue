@@ -186,7 +186,7 @@ export default {
     async fetchApplications() {
       try {
         const res = await axios.get(
-          `https://kvqa-aduit-application.onrender.com/decision-maker/applications/${this.decisionMakerId}`,
+          `https://kvqa-audit-application-kaf.onrender.com/decision-maker/applications/${this.decisionMakerId}`,
           {
             headers: {
               Authorization: `Bearer ${this.token}`
@@ -217,7 +217,7 @@ export default {
       if (!this.selectedCompany) return;
 
       window.open(
-        `https://kvqa-aduit-application.onrender.com/view-kaf/${this.selectedCompany.company_id}/${kafType}`,
+        `https://kvqa-audit-application-kaf.onrender.com/view-kaf/${this.selectedCompany.company_id}/${kafType}`,
         "_blank"
       );
     },
@@ -226,7 +226,7 @@ export default {
       if (!this.selectedCompany) return;
 
       window.open(
-        `https://kvqa-aduit-application.onrender.com/view-kaf/${this.selectedCompany.company_id}/${kafType}`,
+        `https://kvqa-audit-application-kaf.onrender.com/view-kaf/${this.selectedCompany.company_id}/${kafType}`,
         "_blank"
       );
     },
@@ -238,7 +238,7 @@ export default {
 
       try {
         await axios.post(
-          `https://kvqa-aduit-application.onrender.com/decision-maker/decision/${companyId}`,
+          `https://kvqa-audit-application-kaf.onrender.com/decision-maker/decision/${companyId}`,
           { decision },
           {
             headers: {

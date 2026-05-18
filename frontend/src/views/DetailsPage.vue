@@ -80,7 +80,7 @@ export default {
     async fetchKAF() {
       try {
         const res = await axios.get(
-          `https://kvqa-aduit-application.onrender.com/kaf-status/${this.companyId}`
+          `https://kvqa-audit-application-kaf.onrender.com/kaf-status/${this.companyId}`
         );
         this.kafList = res.data;
       } catch (error) {
@@ -90,7 +90,7 @@ export default {
 
     // viewFile(kaf) {
     // //   window.open(
-    // //     `https://kvqa-aduit-application.onrender.com/view-kaf/${this.companyId}/${kaf}`,
+    // //     `https://kvqa-audit-application-kaf.onrender.com/view-kaf/${this.companyId}/${kaf}`,
     // //     "_blank"
     // //   );
 
@@ -104,7 +104,7 @@ export default {
     async viewFile(kaf) {
         try {
             const response = await axios.get(
-            `https://kvqa-aduit-application.onrender.com/view-kaf/${this.companyId}/${kaf}`,
+            `https://kvqa-audit-application-kaf.onrender.com/view-kaf/${this.companyId}/${kaf}`,
             { responseType: "blob" }
             );
 
@@ -150,7 +150,7 @@ export default {
 
       try {
         await axios.post(
-          `https://kvqa-aduit-application.onrender.com/upload-kaf/${this.companyId}/${this.selectedKaf}`,
+          `https://kvqa-audit-application-kaf.onrender.com/upload-kaf/${this.companyId}/${this.selectedKaf}`,
           formData
         );
 
@@ -257,7 +257,7 @@ export default {
     async fetchKAF() {
       try {
         const res = await axios.get(
-          `https://kvqa-aduit-application.onrender.com/kaf-status/${this.companyId}`
+          `https://kvqa-audit-application-kaf.onrender.com/kaf-status/${this.companyId}`
         );
         this.kafList = res.data;
       } catch (error) {
@@ -269,7 +269,7 @@ export default {
     async fetchCompanyName() {
       try {
         const res = await axios.get(
-          `https://kvqa-aduit-application.onrender.com/company/${this.companyId}`
+          `https://kvqa-audit-application-kaf.onrender.com/company/${this.companyId}`
         );
         this.companyName = res.data.name;
       } catch (error) {
@@ -281,7 +281,7 @@ export default {
     async viewFile(kaf) {
       try {
         const response = await axios.get(
-          `https://kvqa-aduit-application.onrender.com/view-kaf/${this.companyId}/${kaf}`,
+          `https://kvqa-audit-application-kaf.onrender.com/view-kaf/${this.companyId}/${kaf}`,
           { responseType: "blob" }
         );
 
@@ -329,7 +329,7 @@ export default {
 
       try {
         await axios.post(
-          `https://kvqa-aduit-application.onrender.com/upload-kaf/${this.companyId}/${this.selectedKaf}`,
+          `https://kvqa-audit-application-kaf.onrender.com/upload-kaf/${this.companyId}/${this.selectedKaf}`,
           formData
         );
 
@@ -550,7 +550,7 @@ export default {
     async fetchCompanyName() {
       try {
         const res = await axios.get(
-          "https://kvqa-aduit-application.onrender.com/sales/get-companies"
+          "https://kvqa-audit-application-kaf.onrender.com/sales/get-companies"
         );
 
         const company = res.data.find(c => c.id == this.companyId);
@@ -567,7 +567,7 @@ export default {
     async fetchKAF() {
       try {
         const res = await axios.get(
-          `https://kvqa-aduit-application.onrender.com/kaf-status/${this.companyId}`
+          `https://kvqa-audit-application-kaf.onrender.com/kaf-status/${this.companyId}`
         );
 
         const backendData = res.data;
@@ -595,7 +595,7 @@ export default {
     async viewFile(kaf) {
       try {
         const response = await axios.get(
-          `https://kvqa-aduit-application.onrender.com/view-kaf/${this.companyId}/${kaf}`,
+          `https://kvqa-audit-application-kaf.onrender.com/view-kaf/${this.companyId}/${kaf}`,
           { responseType: "blob" }
         );
 
@@ -643,7 +643,7 @@ export default {
 
       try {
         await axios.post(
-          `https://kvqa-aduit-application.onrender.com/upload-kaf/${this.companyId}/${this.selectedKaf}`,
+          `https://kvqa-audit-application-kaf.onrender.com/upload-kaf/${this.companyId}/${this.selectedKaf}`,
           formData
         );
 
@@ -660,7 +660,7 @@ export default {
     async viewUploadedFile(kaf) {
       try {
         const response = await axios.get(
-          `https://kvqa-aduit-application.onrender.com/view-kaf/${this.companyId}/${kaf}`,
+          `https://kvqa-audit-application-kaf.onrender.com/view-kaf/${this.companyId}/${kaf}`,
           { responseType: "arraybuffer" }
         );
 

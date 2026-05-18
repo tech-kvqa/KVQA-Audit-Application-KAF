@@ -146,8 +146,8 @@ export default {
 //         async fetchApplications() {
 //   try {
 //     const [salesResponse, consultantsResponse] = await Promise.all([
-//       axios.get("https://kvqa-aduit-application.onrender.com/sales/get-companies"),
-//       axios.get("https://kvqa-aduit-application.onrender.com/company_data"),
+//       axios.get("https://kvqa-audit-application-kaf.onrender.com/sales/get-companies"),
+//       axios.get("https://kvqa-audit-application-kaf.onrender.com/company_data"),
 //     ]);
 
 //     // Ensure sales data is an array
@@ -180,8 +180,8 @@ export default {
     async fetchApplications() {
       try {
         const [salesResponse, consultantsResponse] = await Promise.all([
-          axios.get("https://kvqa-aduit-application.onrender.com/sales/get-companies"),
-          axios.get("https://kvqa-aduit-application.onrender.com/company_data")
+          axios.get("https://kvqa-audit-application-kaf.onrender.com/sales/get-companies"),
+          axios.get("https://kvqa-audit-application-kaf.onrender.com/company_data")
         ]);
 
         // Process Sales Applications

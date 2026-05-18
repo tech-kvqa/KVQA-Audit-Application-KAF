@@ -114,7 +114,7 @@ export default {
     methods: {
         async createConsultant() {
             try {
-                const response = await axios.post("https://kvqa-aduit-application.onrender.com/consultant", this.consultant);
+                const response = await axios.post("https://kvqa-audit-application-kaf.onrender.com/consultant", this.consultant);
                 alert(response.data.message);
                 this.dialog = false;
                 this.fetchConsultants();
@@ -125,7 +125,7 @@ export default {
 
         async fetchConsultants() {
             try {
-                const response = await axios.get("https://kvqa-aduit-application.onrender.com/consultant");
+                const response = await axios.get("https://kvqa-audit-application-kaf.onrender.com/consultant");
                 this.consultants = response.data.consultants;
             } catch (error) {
                 console.error("Error fetching consultants:", error);
@@ -135,7 +135,7 @@ export default {
         async deleteConsultant(id) {
             if (confirm("Are you sure you want to delete this consultant?"));
             try{
-                const response = await axios.delete(`https://kvqa-aduit-application.onrender.com/consultant/${id}`);
+                const response = await axios.delete(`https://kvqa-audit-application-kaf.onrender.com/consultant/${id}`);
                 this.consultants = this.consultants.filter(consultant => consultant.id !== id);
                 alert(`Consultant with ID ${id} deleted`);
             } catch (error) {

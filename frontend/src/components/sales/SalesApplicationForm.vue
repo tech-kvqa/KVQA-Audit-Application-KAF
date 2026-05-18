@@ -44,7 +44,7 @@
     methods: {
       async fetchQuestionnaireTypes() {
         try {
-          const response = await axios.get("https://kvqa-aduit-application.onrender.com/sales/get-questionnaire-types");
+          const response = await axios.get("https://kvqa-audit-application-kaf.onrender.com/sales/get-questionnaire-types");
           this.questionnaireTypes = response.data;
         } catch (error) {
           console.error("Error fetching questionnaire types:", error);
@@ -57,7 +57,7 @@
         }
   
         try {
-          const response = await axios.post("https://kvqa-aduit-application.onrender.com/sales/send-email", {
+          const response = await axios.post("https://kvqa-audit-application-kaf.onrender.com/sales/send-email", {
             company_name: this.company.name,
             address: this.company.address,
             director: this.company.director,

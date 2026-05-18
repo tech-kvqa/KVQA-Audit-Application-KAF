@@ -115,7 +115,7 @@ export default {
 
     async fetchCompanyData() {
       try {
-        const response = await axios.get("https://kvqa-aduit-application.onrender.com/sales/get-companies");
+        const response = await axios.get("https://kvqa-audit-application-kaf.onrender.com/sales/get-companies");
         this.companies = response.data.map(company => ({
             id: company.id,
             name: company.name,
@@ -134,7 +134,7 @@ export default {
     async deleteCompany(id) {
         if (!confirm("Are you sure you want to delete this company?")) return;
         try {
-            await axios.delete(`https://kvqa-aduit-application.onrender.com/sales/delete-company/${id}`);
+            await axios.delete(`https://kvqa-audit-application-kaf.onrender.com/sales/delete-company/${id}`);
             this.fetchCompanyData(); // Refresh list after deletion
         } catch (error) {
             console.error("Error deleting company:", error);

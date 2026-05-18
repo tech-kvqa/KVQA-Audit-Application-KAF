@@ -49,7 +49,7 @@
         formData.append("token", this.token);
   
         try {
-          const response = await axios.post("https://kvqa-aduit-application.onrender.com/sales/upload", formData, {
+          const response = await axios.post("https://kvqa-audit-application-kaf.onrender.com/sales/upload", formData, {
             headers: { "Content-Type": "multipart/form-data" }
           });
   
@@ -133,7 +133,7 @@
         formData.append("token", this.token);
   
         try {
-          const response = await axios.post("https://kvqa-aduit-application.onrender.com/sales/upload", formData, {
+          const response = await axios.post("https://kvqa-audit-application-kaf.onrender.com/sales/upload", formData, {
             headers: { "Content-Type": "multipart/form-data" }
           });
   
@@ -153,7 +153,7 @@
       },
 
       // closeWindow() {
-      //   window.location.href = "https://kvqa-aduit-application.onrender.com/close-tab";
+      //   window.location.href = "https://kvqa-audit-application-kaf.onrender.com/close-tab";
       // }
     }
   };

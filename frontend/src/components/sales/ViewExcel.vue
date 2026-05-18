@@ -49,7 +49,7 @@
       async fetchExcelFile() {
         try {
           const response = await axios.get(
-            `https://kvqa-aduit-application.onrender.com/sales/get-uploaded-form/${this.companyName}/${this.questionnaireType}`,
+            `https://kvqa-audit-application-kaf.onrender.com/sales/get-uploaded-form/${this.companyName}/${this.questionnaireType}`,
             { responseType: "arraybuffer" }
           );
   
@@ -149,7 +149,7 @@
     //   async fetchExcelFile() {
     //     try {
     //       const response = await axios.get(
-    //         `https://kvqa-aduit-application.onrender.com/sales/get-uploaded-form/${this.companyName}/${this.questionnaireType}`,
+    //         `https://kvqa-audit-application-kaf.onrender.com/sales/get-uploaded-form/${this.companyName}/${this.questionnaireType}`,
     //         { responseType: "arraybuffer" }
     //       );
   
@@ -166,8 +166,8 @@
   try {
     console.log("Fetching Excel file...");
     const response = await axios.get(
-      // `https://kvqa-aduit-application.onrender.com/sales/get-uploaded-form/${this.companyName}/${this.questionnaireType}`,
-      `https://kvqa-aduit-application.onrender.com/sales/get-uploaded-form/${this.companyName}/${this.questionnaireType}`,
+      // `https://kvqa-audit-application-kaf.onrender.com/sales/get-uploaded-form/${this.companyName}/${this.questionnaireType}`,
+      `https://kvqa-audit-application-kaf.onrender.com/sales/get-uploaded-form/${this.companyName}/${this.questionnaireType}`,
       { responseType: "arraybuffer" }
     );
 

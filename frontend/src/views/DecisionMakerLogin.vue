@@ -51,7 +51,7 @@ export default {
       this.loading = true;
 
       try {
-        const res = await axios.post("https://kvqa-aduit-application.onrender.com/decision-maker/login", {
+        const res = await axios.post("https://kvqa-audit-application-kaf.onrender.com/decision-maker/login", {
           username: this.username,
           password: this.password
         });

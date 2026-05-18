@@ -137,7 +137,7 @@ export default {
     async fetchCompanyName() {
       try {
         const res = await axios.get(
-          "https://kvqa-aduit-application.onrender.com/sales/get-companies"
+          "https://kvqa-audit-application-kaf.onrender.com/sales/get-companies"
         );
 
         const company = res.data.find(c => c.id == this.companyId);
@@ -154,7 +154,7 @@ export default {
     async fetchKAF() {
       try {
         const res = await axios.get(
-          `https://kvqa-aduit-application.onrender.com/kaf-status/${this.companyId}`
+          `https://kvqa-audit-application-kaf.onrender.com/kaf-status/${this.companyId}`
         );
 
         const backendData = res.data;
@@ -179,7 +179,7 @@ export default {
 
     viewFile(kaf) {
       window.open(
-        `https://kvqa-aduit-application.onrender.com/view-kaf/${this.companyId}/${kaf}`,
+        `https://kvqa-audit-application-kaf.onrender.com/view-kaf/${this.companyId}/${kaf}`,
         "_blank"
       );
     },
@@ -187,7 +187,7 @@ export default {
     async downloadFile(kaf) {
       try {
         const response = await axios.get(
-          `https://kvqa-aduit-application.onrender.com/view-kaf/${this.companyId}/${kaf}`,
+          `https://kvqa-audit-application-kaf.onrender.com/view-kaf/${this.companyId}/${kaf}`,
           { responseType: "blob" }
         );
 
