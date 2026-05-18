@@ -2,7 +2,7 @@
   <v-app>
     <v-main>
       <v-app-bar app color="#9e170a" dark>
-        <v-toolbar-title>KVQA Assessment</v-toolbar-title>
+        <v-toolbar-title>KV Registrar</v-toolbar-title>
         <v-spacer></v-spacer>
         <v-btn color="white" v-if="isLoggedIn" @click="logout">Logout</v-btn>
         <!-- <v-btn color="white" v-else @click="home">Home</v-btn> -->
