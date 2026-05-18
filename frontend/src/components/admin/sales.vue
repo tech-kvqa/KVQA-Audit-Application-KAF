@@ -120,7 +120,7 @@ export default {
     methods: {
         async createsalesexecutive() {
             try {
-                const response = await axios.post("https://kvqa-aduit-application.onrender.com/sales", this.sales);
+                const response = await axios.post("https://kvqa-audit-application-kaf.onrender.com/sales", this.sales);
                 alert(response.data.message);
                 this.dialog = false;
                 this.fetchSalesExecutives();
@@ -131,7 +131,7 @@ export default {
 
         async fetchSalesExecutives() {
             try {
-                const response = await axios.get("https://kvqa-aduit-application.onrender.com/sales");
+                const response = await axios.get("https://kvqa-audit-application-kaf.onrender.com/sales");
                 console.log(response)
                 this.salesexecutive = response.data.Sales;
             } catch (error) {
@@ -142,7 +142,7 @@ export default {
         async deleteSalesExecutives(id) {
             if (confirm("Are you sure you want to delete this consultant?"));
             try{
-                const response = await axios.delete(`https://kvqa-aduit-application.onrender.com/sales/${id}`);
+                const response = await axios.delete(`https://kvqa-audit-application-kaf.onrender.com/sales/${id}`);
                 this.salesexecutive = this.salesexecutive.filter(sales => sales.id !== id);
                 alert(`Consultant with ID ${id} deleted`);
             } catch (error) {

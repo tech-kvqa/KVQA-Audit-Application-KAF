@@ -1,7 +1,7 @@
 <template>
     <v-container class="d-flex justify-center align-center fill-height">
       <v-card width="400" class="pa-6">
-        <v-card-title class="text-h5 text-center">Sales Login</v-card-title>
+        <v-card-title class="text-h5 text-center">Auditor Login</v-card-title>
         <v-divider class="my-4"></v-divider>
   
         <v-form @submit.prevent="login">
