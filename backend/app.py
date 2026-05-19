@@ -30,12 +30,12 @@ jwt = JWTManager(app)
 db.init_app(app)
 
 # Configure Email Sender
-SMTP_SERVER = "smtp.gmail.com"
-SMTP_PORT = 587
-SENDER_EMAIL = "akanuragkumar75@gmail.com"
-SENDER_PASSWORD = "gersqaguuxkhotwt"
-SALES_EMAIL = "akanuragkumar75@gmail.com"
-SALES_PASSWORD = "gersqaguuxkhotwt"
+# SMTP_SERVER = "smtp.gmail.com"
+# SMTP_PORT = 587
+# SENDER_EMAIL = "akanuragkumar75@gmail.com"
+# SENDER_PASSWORD = "gersqaguuxkhotwt"
+# SALES_EMAIL = "akanuragkumar75@gmail.com"
+# SALES_PASSWORD = "gersqaguuxkhotwt"
 
 QUESTIONNAIRE_PATHS = {
     # "QMS": "questionnaire/QMS.pdf",
