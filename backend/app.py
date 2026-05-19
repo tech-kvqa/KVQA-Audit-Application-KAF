@@ -742,7 +742,12 @@ def upload_kaf_files(token):
             filepath = os.path.join(UPLOAD_FOLDER, filename)
             file.save(filepath)
 
-            setattr(kaf_doc, kaf.lower(), filepath)
+            # setattr(kaf_doc, kaf.lower(), filepath)
+            setattr(
+                kaf_doc,
+                kaf.lower(),
+                os.path.join("kaf_uploads", filename).replace("\\", "/")
+            )
 
     db.session.add(kaf_doc)
     db.session.commit()
@@ -806,21 +811,45 @@ def upload_kaf(company_id, kaf_type):
     upload_folder = "kaf_uploads"
     os.makedirs(upload_folder, exist_ok=True)
 
+    # filename = f"{company_id}_{kaf_type}.docx"
+    # # filepath = os.path.join(upload_folder, filename)
+    # filepath = os.path.join(UPLOAD_FOLDER, filename)
+    # file.save(filepath)
+
+    # kaf = KAFTracking.query.filter_by(company_id=company_id, kaf_type=kaf_type).first()
+
+    # if not kaf:
+    #     kaf = KAFTracking(company_id=company_id, kaf_type=kaf_type)
+
+    # kaf.file_path = filepath
+    # kaf.uploaded_at = datetime.utcnow()
+
+    # db.session.add(kaf)
+    # db.session.commit()
+
     filename = f"{company_id}_{kaf_type}.docx"
-    # filepath = os.path.join(upload_folder, filename)
+
+    # Actual server file location
     filepath = os.path.join(UPLOAD_FOLDER, filename)
     file.save(filepath)
 
-    kaf = KAFTracking.query.filter_by(company_id=company_id, kaf_type=kaf_type).first()
+    # Store portable DB path only
+    relative_path = os.path.join("kaf_uploads", filename).replace("\\", "/")
+
+    kaf = KAFTracking.query.filter_by(
+        company_id=company_id,
+        kaf_type=kaf_type
+    ).first()
 
     if not kaf:
         kaf = KAFTracking(company_id=company_id, kaf_type=kaf_type)
 
-    kaf.file_path = filepath
+    kaf.file_path = relative_path
     kaf.uploaded_at = datetime.utcnow()
 
     db.session.add(kaf)
     db.session.commit()
+
 
     return jsonify({"message": "Uploaded successfully"})
 
@@ -862,6 +891,37 @@ def get_company(id):
     return jsonify({
         "id": company.id,
         "name": company.name
+    })
+
+@app.route('/delete-kaf/<int:company_id>/<kaf_type>', methods=['DELETE'])
+def delete_kaf(company_id, kaf_type):
+
+    kaf = KAFTracking.query.filter_by(
+        company_id=company_id,
+        kaf_type=kaf_type
+    ).first()
+
+    if not kaf:
+        return jsonify({"error": "KAF not found"}), 404
+
+    if kaf.file_path:
+
+        # Convert relative path to actual server path
+        filename = os.path.basename(kaf.file_path)
+        actual_path = os.path.join(UPLOAD_FOLDER, filename)
+
+        # Delete physical file
+        if os.path.exists(actual_path):
+            os.remove(actual_path)
+
+    # Remove DB values
+    kaf.file_path = None
+    kaf.uploaded_at = None
+
+    db.session.commit()
+
+    return jsonify({
+        "message": f"{kaf_type} deleted successfully"
     })
 
 

@@ -403,6 +403,27 @@ export default {
           </v-btn>
         </template>
 
+        <template #[`item.delete`]="{ item }">
+
+          <v-btn
+            v-if="item.file_exists"
+            color="red"
+            @click="deleteFile(item.kaf_type)"
+          >
+            Delete
+          </v-btn>
+
+          <v-btn
+            v-else
+            color="grey"
+            variant="outlined"
+            disabled
+          >
+            Not Available
+          </v-btn>
+
+        </template>
+
         <!-- Send Mail Column -->
         <!-- Send Mail Column -->
         <template #[`item.mail`]="{ item }">
@@ -524,6 +545,7 @@ export default {
         { title: "Date", key: "date" },
         { title: "Action", key: "action" },
         { title: "View", key: "view" },
+        { title: "Delete", key: "delete" },
         { title: "Send Mail", key: "mail" } 
       ],
 
@@ -674,6 +696,32 @@ export default {
       } catch (error) {
         console.error("Preview failed:", error);
         alert("Unable to preview document.");
+      }
+    },
+
+    async deleteFile(kaf) {
+
+      const confirmed = confirm(
+        `Are you sure you want to delete ${kaf}?`
+      );
+
+      if (!confirmed) return;
+
+      try {
+
+        await axios.delete(
+          `https://kvqa-audit-application-kaf.onrender.com/delete-kaf/${this.companyId}/${kaf}`
+        );
+
+        alert(`${kaf} deleted successfully`);
+
+        this.fetchKAF();
+
+      } catch (error) {
+
+        console.error("Delete failed:", error);
+
+        alert("Unable to delete file.");
       }
     },
   }
